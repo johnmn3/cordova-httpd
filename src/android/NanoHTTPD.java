@@ -385,7 +385,7 @@ public class NanoHTTPD
 				// Decode the header into parms and header java properties
 				decodeHeader(hin, pre, parms, header);
 				String method = pre.getProperty("method");
-				if (method = null)
+				if (method == null)
 				{
 					method = "";
 				}
