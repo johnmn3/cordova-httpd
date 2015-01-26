@@ -303,6 +303,7 @@ public class NanoHTTPD
 		File wwwroot = new File(".").getAbsoluteFile();
 
 		// Show licence if requested
+		/*
 		for ( int i=0; i<args.length; ++i )
 			if(args[i].equalsIgnoreCase("-p"))
 				port = Integer.parseInt( args[i+1] );
@@ -313,6 +314,8 @@ public class NanoHTTPD
 				myOut.println( LICENCE + "\n" );
 				break;
 			}
+		*/
+			
 
 		try
 		{
@@ -382,6 +385,10 @@ public class NanoHTTPD
 				// Decode the header into parms and header java properties
 				decodeHeader(hin, pre, parms, header);
 				String method = pre.getProperty("method");
+				if (method = null)
+				{
+					method = "";
+				}
 				String uri = pre.getProperty("uri");
 
 				long size = 0x7FFFFFFFFFFFFFFFl;
@@ -427,7 +434,7 @@ public class NanoHTTPD
 
 				// If the method is POST, there may be parameters
 				// in data section, too, read it:
-				if ( method.equalsIgnoreCase( "POST" ))
+				if (method != null && method.equalsIgnoreCase( "POST" ))
 				{
 					String contentType = "";
 					String contentTypeHeader = header.getProperty("content-type");
@@ -466,7 +473,7 @@ public class NanoHTTPD
 					}
 				}
 
-				if ( method.equalsIgnoreCase( "PUT" ))
+				if (method != null && method.equalsIgnoreCase( "PUT" ))
 					files.put("content", saveTmpFile( fbuf, 0, f.size()));
 
 				// Ok, now do the serve()
