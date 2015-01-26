@@ -116,6 +116,9 @@ public class NanoHTTPD
 			Log.i( LOGTAG, "  UPLOADED: '" + value + "' = '" + files.getProperty( value ) + "'" );
 		}
 */
+		
+		Response res = null;
+		
 		if (uri != null)
 		{
 			return serveFile( uri, header, myRootDir, true );
