@@ -119,6 +119,10 @@ public class NanoHTTPD
 		if (uri != null)
 		{
 			return serveFile( uri, header, myRootDir, true );
+		} else {
+			res = new Response( HTTP_INTERNALERROR, MIME_PLAINTEXT,
+					"INTERNAL ERRROR: serve(uri... ): uri == null" );
+			return res;
 		}
 		
 	}
